@@ -65,6 +65,7 @@ namespace This
     }
     */
 
+    /*
     class WaterHeater
     {
         protected int temperature;
@@ -85,7 +86,71 @@ namespace This
             Console.WriteLine($"Turn on water : {temperature}");
         }
     }
+    */
 
+    /*
+    class Base
+    {
+        protected string Name;
+        public Base(string Name)
+        {
+            this.Name = Name;
+            Console.WriteLine($"{this.Name}.Base()");
+        }
+
+        ~Base()
+        {
+            Console.WriteLine($"{this.Name}.~Base()");
+        }
+
+        public void BaseMethod()
+        {
+            Console.WriteLine($"{Name}.BaseMethod()");
+        }
+    }
+
+    class Derived : Base
+    {
+        public Derived(string Name) : base(Name)
+        {
+            Console.WriteLine($"{this.Name}.Derived()");
+        }
+
+        ~Derived()
+        {
+            Console.WriteLine($"{this.Name}.~Derived");
+        }
+
+        public void DerivedMethod()
+        {
+            Console.WriteLine($"{Name}.DerivedMethod()");
+        }
+    }
+    */
+
+    class Mammal
+    {
+        public void Nurse()
+        {
+            Console.WriteLine("Nurse()");
+        }
+    }
+
+    class Dog : Mammal
+    {
+        public void Bark()
+        {
+            Console.WriteLine("Bark()");
+        }
+    }
+
+    class Cat : Mammal
+    {
+        public void Meow()
+        {
+            Console.WriteLine("Meow");
+        }
+    }
 
     class MainApp
     {
@@ -116,6 +181,7 @@ namespace This
             c.PrintFields();
             */
 
+            /*
             try
             {
                 WaterHeater heater = new WaterHeater();
@@ -124,8 +190,46 @@ namespace This
                 heater.TurnOnWater();
 
                 heater.SetTemperature(-2);
+                heater.TurnOnWater();
 
+                heater.SetTemperature(50);
+                heater.TurnOnWater();
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            */
+
+            /*
+            Base a = new Base("a");
+            a.BaseMethod();
+
+            Derived b = new Derived("b");
+            b.BaseMethod();
+            b.DerivedMethod();
+            */
+
+            Mammal mammal = new Dog();
+            Dog dog;
+
+            if(mammal is Dog)
+            {
+                dog = (Dog)mammal;
+                dog.Bark();
+            }
+
+            Mammal mammal2 = new Cat();
+
+            Cat cat = mammal2 as Cat;
+            if (cat != null)
+                cat.Meow();
+
+            Cat cat2 = mammal as Cat;
+            if (cat2 != null)
+                cat2.Meow();
+            else
+                Console.WriteLine("cat2 is not a Cat");
 
             Console.ReadKey();
         }
