@@ -136,6 +136,31 @@ namespace Interface
     }
     */
     
+    //추상 클래스
+    abstract class AbstractBase
+    {
+        protected void PrivateMethodA()
+        {
+            Console.WriteLine("AbstractBase.PrivateMethodA()");
+        }
+
+        public void PublicMethodA()
+        {
+            Console.WriteLine("AbstractBase.PublicMethodA()");
+        }
+
+        public abstract void AbstractMethodA();
+    }
+
+    class Derived : AbstractBase
+    {
+        public override void AbstractMethodA()
+        {
+            Console.WriteLine("Derived.AbstractMethodA()");
+            PrivateMethodA();
+        }
+    }
+
     class MainApp
     {
         static void Main(string[] args)
@@ -169,9 +194,34 @@ namespace Interface
             //clogger.WriteLog("System Up");
             //clogger.WriteError("System Fail"); // 컴파일 에러 
 
+            AbstractBase obj = new Derived();
+            obj.AbstractMethodA();
+            obj.PublicMethodA();
 
             Console.ReadKey();
 
         }
     }
 }
+
+
+// 추상 클래스 예시 
+/*
+abstract class AbstractBase
+{
+    public abstract void SomeMethod();
+}
+
+class Derived : AbstractBase
+{
+    public override void SomeMethod()
+    {
+        // Something
+    }
+}
+*/
+
+//추상 메소드는 추상 클래스를 사용하는 프로그래머가 그 기능을 정의하도록 강제하는 장치
+// 보통의 클래스를 통해서도 할 수 있음 : 그냥 메소드를 선언 후 , 매뉴얼을 적음 (파생 클래스를 만들어 사용 , methodA, B는 오버라이딩 해야함) 
+// 그러나 강제시킬 수 없음
+// >> 추상 클래스 이용 시 이런한 설명을 할 필요가 없음
