@@ -8,6 +8,7 @@ namespace Property
 {
     class BirthdayInfo
     {
+        /*
         private string name;
         private DateTime birthday;
 
@@ -42,11 +43,59 @@ namespace Property
                 return new DateTime(DateTime.Now.Subtract(birthday).Ticks).Year;
             }
         }
+        */
+
+        /*
+        public string Name { get; set; } = "Unknown";
+        public DateTime Birthday { get; set; } = new DateTime(1, 1, 1);
+        public int Age
+        {
+            get
+            {
+                return new DateTime(DateTime.Now.Subtract(Birthday).Ticks).Year;
+            }
+        }
+        */
+
+        /*
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public DateTime Birthday
+        {
+            get;
+            set;
+        }
+
+        public int Age
+        {
+            get
+            {
+                return new DateTime(DateTime.Now.Subtract(Birthday).Ticks).Year;
+            }
+        }
+        */
+
+        /*
+        class Transaction
+        {
+            // init 은 C# 9.0 버전 이상에서 사용 가능
+            public string From { get; init; }
+            public string To { get; init; }
+
+        }
+        */
+        
     }
+
     class MainApp
     {
         static void Main(string[] args)
         {
+            /*
             // setter 이용 > Name 을 통해 name 에 접근
             BirthdayInfo birth = new BirthdayInfo();
             birth.Name = "서현";
@@ -56,6 +105,30 @@ namespace Property
             Console.WriteLine($"Name : {birth.Name}");
             Console.WriteLine($"Birthday : {birth.Birthday.ToShortDateString()}");
             Console.WriteLine($"Age : {birth.Age}");
+            */
+
+            /*
+            BirthdayInfo birth = new BirthdayInfo();
+            Console.WriteLine($"Name : {birth.Name}");
+            Console.WriteLine($"Birthday: {birth.Birthday.ToShortDateString()}");
+            Console.WriteLine($"Age : {birth.Age}");
+
+            birth.Name = "서현";
+            birth.Birthday = new DateTime(1991, 6, 28);
+
+            Console.WriteLine($"Name : {birth.Name}");
+            Console.WriteLine($"Birthday : {birth.Birthday.ToShortDateString()}");
+            Console.WriteLine($"Age : {birth.Age}");
+            */
+
+            var a = new { Name = "박상현", Age = 123 };
+            Console.WriteLine($"Name: {a.Name}, Age: {a.Age}");
+
+            var b = new { Subject = "수학", Scores = new int[] { 90, 80, 70, 60 } };
+
+            Console.Write($"Subject: {b.Subject}, Scores: ");
+            foreach (var score in b.Scores)
+                Console.Write($"{score} ");
 
             Console.ReadKey();
         }
